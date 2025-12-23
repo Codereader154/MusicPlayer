@@ -43,13 +43,13 @@ public class AlbumController {
     public ResponseEntity<?> createAlbum(@RequestBody List<AlbumDB> album,
                                          @RequestParam("authUserId") int authUserId) {
         if (authUserId != 1) {
-            return new ResponseEntity<>("Access Denied: Only Superadmin (Role 1) can create albums.", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Access Denied : Only Superadmin (Role 1) can create albums.", HttpStatus.FORBIDDEN);
         }else{
             for(AlbumDB a: album){
                 a.setCreatedById(authUserId);
                 albumService.saveAlbum(a);
             }
-            return new ResponseEntity<>("Album created successfully", HttpStatus.CREATED);
+            return new ResponseEntity<>("Album created successfully ", HttpStatus.CREATED);
         }
 
     }
